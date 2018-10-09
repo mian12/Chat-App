@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "46262203874",
+    "firebase_url": "https://messengerkotlin-f090b.firebaseio.com",
+    "project_id": "messengerkotlin-f090b",
+    "storage_bucket": "messengerkotlin-f090b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46262203874:android:03d868ea1c0e9f72",
+        "android_client_info": {
+          "package_name": "com.solution.grace.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46262203874-7oasobvkv276hahrttcqvh2l8htk2mvn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.solution.grace.messenger",
+            "certificate_hash": "e2e90fdbc8d287883f3adb4629b2f150f9b63ea9"
+          }
+        },
+        {
+          "client_id": "46262203874-5h8h980fg6l93cducu6pl8sau5ftta1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoeX0JqU-JVSZk-1q5wgk0h-WxqrntvkA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46262203874-5h8h980fg6l93cducu6pl8sau5ftta1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4a0072"
+
+    tools:context=".RegisterActivity">
+
+
+    <EditText
+        android:id="@+id/userName_edittext_register"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_background_rounded"
+        android:ems="10"
+        android:hint="User Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_imageView_register" />
+
+    <EditText
+        android:id="@+id/email_editText4_register"
+        android:hint="Email"
+        android:paddingLeft="15dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_background_rounded"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/userName_edittext_register"
+        app:layout_constraintStart_toStartOf="@+id/userName_edittext_register"
+        app:layout_constraintTop_toBottomOf="@+id/userName_edittext_register" />
+
+    <EditText
+        android:id="@+id/password_editText5_register"
+        android:hint="Password"
+        android:paddingLeft="15dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_background_rounded"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/email_editText4_register"
+        app:layout_constraintStart_toStartOf="@+id/email_editText4_register"
+        app:layout_constraintTop_toBottomOf="@+id/email_editText4_register" />
+
+    <Button
+        android:id="@+id/register_button2"
+        android:layout_width="234dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:background="@android:color/holo_purple"
+        android:text="Register"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/password_editText5_register"
+        app:layout_constraintStart_toStartOf="@+id/password_editText5_register"
+        app:layout_constraintTop_toBottomOf="@+id/password_editText5_register" />
+
+    <TextView
+        android:id="@+id/sign_in_textView2"
+        android:layout_width="0dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/already_text"
+        android:textColor="@android:color/white"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/register_button2"
+        app:layout_constraintStart_toStartOf="@+id/register_button2"
+        app:layout_constraintTop_toBottomOf="@+id/register_button2" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_imageView_register"
+        app:civ_border_width="4dp"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/kat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
