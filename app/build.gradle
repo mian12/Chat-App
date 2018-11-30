@@ -4,11 +4,15 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+androidExtensions{
+    experimental=true
+}
+
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.solution.grace.messenger"
-        minSdkVersion 17
+        minSdkVersion 20
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -37,6 +41,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:16.0.2'
     implementation 'com.google.firebase:firebase-storage:16.0.1'
 
+    implementation 'com.google.code.gson:gson:2.8.5'
 
 
     implementation 'de.hdodenhof:circleimageview:2.2.0'

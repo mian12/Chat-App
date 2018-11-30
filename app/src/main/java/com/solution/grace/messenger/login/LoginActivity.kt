@@ -1,9 +1,12 @@
-package com.solution.grace.messenger
+package com.solution.grace.messenger.login
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.solution.grace.messenger.R
+import com.solution.grace.messenger.messages.LatestMesagesActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -25,15 +28,17 @@ class LoginActivity : AppCompatActivity() {
     private fun loginUser() {
         val email = email_editText_sign_in.text.toString()
         val password = password_editText2_sign_in.text.toString()
-
+        if (email.isEmpty() || password.isEmpty())
+            return
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener() {
             if (it.isSuccessful) {
-                Toast.makeText(this, "sign in successfully ${it.result.user}", Toast.LENGTH_LONG).show()
+                var intent = Intent(this, LatestMesagesActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
 
             } else {
-                // it.result.user
-                Toast.makeText(this, "else part ${it.result}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "else part ${it.exception}", Toast.LENGTH_LONG).show()
 
             }
 

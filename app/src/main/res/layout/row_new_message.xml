@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView_profile"
@@ -13,8 +14,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:civ_border_width="4dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:src="@android:drawable/btn_dialog" />
+        />
 
     <TextView
         android:id="@+id/name_user"
