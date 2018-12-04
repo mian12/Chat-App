@@ -2,10 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item  android:id="@+id/nev_signOut"
-        android:title="Sign out"
-        app:showAsAction="ifRoom"></item>
-    <item android:id="@+id/nev_newMessage"
+
+    <item
+        android:id="@+id/nev_newMessage"
+        android:icon="@drawable/ic_message_black_24dp"
         android:title="New Message"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/nev_signOut"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:title="Sign out"
         app:showAsAction="ifRoom"></item>
 </menu>

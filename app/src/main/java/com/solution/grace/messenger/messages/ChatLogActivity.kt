@@ -13,12 +13,14 @@ import com.solution.grace.messenger.R
 import com.solution.grace.messenger.messages.NewMessageActivity.Companion.KEY_USER
 import com.solution.grace.messenger.model.ChatMessageModel
 import com.solution.grace.messenger.model.User
+import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_chat_log.*
 import kotlinx.android.synthetic.main.chat_from_row.view.*
 import kotlinx.android.synthetic.main.chat_to_row.view.*
+import kotlinx.android.synthetic.main.row_new_message.view.*
 
 
 class ChatLogActivity : AppCompatActivity() {
@@ -44,7 +46,7 @@ class ChatLogActivity : AppCompatActivity() {
 
         toUser = intent.getParcelableExtra<User>(NewMessageActivity.KEY_USER)
 
-        supportActionBar?.title = toUser!!.userName
+        supportActionBar?.title = toUser?.userName
 
         button_send_chatlog.setOnClickListener {
             Log.d(TAG, "attempt to send mesage..")
@@ -55,6 +57,8 @@ class ChatLogActivity : AppCompatActivity() {
 
         listenForMessage()
     }
+
+
 
     private fun performSendMessage() {
 
@@ -76,10 +80,19 @@ class ChatLogActivity : AppCompatActivity() {
 
         refFrom.setValue(chatMessageModel)
 
-        refToUser.setValue(chatMessageModel)
+        refToUser.setValue(chatMessageModel).addOnSuccessListener({
 
-        editText_chatLog.text.clear()
-        recyclerview_chatLog.scrollToPosition(adapter.itemCount-1)
+            editText_chatLog.text.clear()
+            recyclerview_chatLog.scrollToPosition(adapter.itemCount - 1)
+
+        })
+
+
+        val latestMessageFrom = FirebaseDatabase.getInstance().getReference("/latest_message/$fromId/$toId")
+        latestMessageFrom.setValue(chatMessageModel)
+
+        val latestMessageTo = FirebaseDatabase.getInstance().getReference("/latest_message/$toId/$fromId")
+        latestMessageTo.setValue(chatMessageModel)
 
 
     }
@@ -98,12 +111,15 @@ class ChatLogActivity : AppCompatActivity() {
                 val chatMessage = p0.getValue(ChatMessageModel::class.java)
                 // user current logged id=fromID
                 if (FirebaseAuth.getInstance().uid == chatMessage!!.fromId) {
-                    adapter.add(ChatFromItem(chatMessage.text))
+                    val currentUser = LatestMesagesActivity.currentUserLoggedIn
+                    adapter.add(ChatFromItem(chatMessage.text, currentUser!!))
                 } else {
 
-                    adapter.add(ChatToItem(chatMessage.text))
+                    adapter.add(ChatToItem(chatMessage.text, toUser!!))
 
                 }
+
+                recyclerview_chatLog.scrollToPosition(adapter.itemCount-1)
 
             }
 
@@ -124,10 +140,14 @@ class ChatLogActivity : AppCompatActivity() {
         })
     }
 
-    class ChatFromItem(val msg: String) : Item<ViewHolder>() {
+    class ChatFromItem(val msg: String, val currentUser: User) : Item<ViewHolder>() {
 
         override fun bind(viewHolder: ViewHolder, position: Int) {
             viewHolder.itemView.textView_from_row_message.text = msg
+
+            var chatFromPic = viewHolder.itemView.imageView_chatFrom
+
+            Picasso.get().load(currentUser.profileImageUrl).into(chatFromPic)
         }
 
         override fun getLayout(): Int {
@@ -137,10 +157,14 @@ class ChatLogActivity : AppCompatActivity() {
 
     }
 
-    class ChatToItem(val msg: String) : Item<ViewHolder>() {
+    class ChatToItem(val msg: String, val toUser: User) : Item<ViewHolder>() {
 
         override fun bind(viewHolder: ViewHolder, position: Int) {
             viewHolder.itemView.textView_to_row_message.text = msg
+            var chatToPic = viewHolder.itemView.imageView_chatTo
+
+            Picasso.get().load(toUser.profileImageUrl).into(chatToPic)
+
         }
 
         override fun getLayout(): Int {
